@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+    script(type='text/javascript').
+      const foo = true;
+      let bar = function() {};
+      if (foo) {
+      bar(1 + 5)
+      }
+  body
+    form(name="add-estimation", method="post")
+      label(for='bid') Book Id:
+      br
+      input#bid(type='text' name='bid')
+      br
+      label(for='book') Book Name:
+      br
+      input#bname(type='text' name='bname')
+      br
+      label(for='author') Author name:
+      br
+      input#bname(type='text' name='bname')
+      input(type='submit' value='Submit')
