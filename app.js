@@ -6,7 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var infoRouter = require('./routes/info');
+var searchRouter = require('./routes/search')
+var loginRouter = require('./routes/login')
 var app = express();
 
 // view engine setup
@@ -21,7 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/info', infoRouter);
+app.use('/books/search', searchRouter);
+app.use('/auth/login', loginRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -37,9 +41,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.listen(3000, function (req, res) {
+console.log(path.join(__dirname,'/views///eror.jade','..'));
+app.listen(3001, function (req, res) {
   console.log("server is running on port 3000")
 })
+
+
 
 module.exports = app;
