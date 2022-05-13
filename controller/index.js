@@ -13,44 +13,48 @@ exports.getProfiles = function (req, res) {
 };
 
 exports.getAllbday = function (req, res) {
-  function arraryEqual(a, b) {
-    return Array.isArray(a) && Array.isArray(b) && a.length == b.length && (a.every((val, index) => val === b[index]));
-  }
+  
   var today = new Date();
   var a = String(today.getDate())
   var b = String(today.getMonth() + 1);
-  var current=[a,b]
-  console.log(current);
   Users.find(function (err, data) {
     const ppp = data;
     if (err) {
       res.json({ ERROR: err });
     }
-    //   else {
-    //   //   var pp = []
-    //   //   for (var i = 0; i < ppp.length; i++) {
-    //   //     pp.push((ppp[i]["dob"]));
-    //   //   }
-    //   //   for (let j = 0; j < pp.length; j++) {
-    //   //     var b = pp[j].split("/").splice(0, 2);
-    //   //     var c = arraryEqual(current, b);
-    //   //     if (c) {
-    //   //       ans.push(pp[j])
-    //   //       break;
-    //   //     }
-    //   //   }
-    //   //   for (let k = 0; k < ppp.length; k++) {
-    //   //     if (ppp[k]["dob"] == ans.join("")) {
-    //   //       ans1.push(ppp[k]['fname'] + " " + ppp[k]['lname']);
-    //   //     }
-    //   //   }
-    //   // }
-    //   // res.send(ans1);
-    // });
-  
-  }
-  );
+    else {
+      const regex = new RegExp(a + "[-/]" + b + "[-/][0-9]{4}");
+    
+      var pp = []
+      var ans = []
+      for (let i = 0; i < ppp.length; i++) {
+        pp.push((ppp[i]["dob"]));
+          if ((regex.test(pp[i])) == true) {
+            ans.push(ppp[i]['fname'] + " " + ppp[i]['lname']);
+            continue;
+          }
+        
+      }
+      res.send(ans)
+    }
+  })
 }
+      //   //   for (let j = 0; j < pp.length; j++) {
+      //   //     var b = pp[j].split("/").splice(0, 2);
+      //   //     var c = arraryEqual(current, b);
+      //   //     if (c) {
+      //   //       ans.push(pp[j])
+      //   //       break;
+      //   //     }
+      //   //   }
+      //   //   for (let k = 0; k < ppp.length; k++) {
+      //   //     if (ppp[k]["dob"] == ans.join("")) {
+      //   //       ans1.push(ppp[k]['fname'] + " " + ppp[k]['lname']);
+      //   //     }
+      //   //   }
+      //   // }
+      //   // res.send(ans1);
+      // })
 
 
 exports.todayBday = function (req, res) {
