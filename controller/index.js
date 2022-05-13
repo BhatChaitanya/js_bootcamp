@@ -74,7 +74,7 @@ exports.getFullName = function (req, res) {
     if (err) {
       res.json({ ERROR: err });
     } else {
-      res.send(data.fullName);
+      res.send(data.fname+" "+data.lname);
     }
   });
 };
