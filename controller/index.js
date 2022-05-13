@@ -64,8 +64,10 @@ exports.todayBday = function (req, res) {
     if (err) {
       res.send("error");
     }
-    else if(data.getIfBday())
-        return res.send("Happy Birthday!!");
+    else {
+      if (data.getIfBday())
+        console.log("Happy Birthday!!");
+    }
   });
 };
 exports.getFullName = function (req, res) {
