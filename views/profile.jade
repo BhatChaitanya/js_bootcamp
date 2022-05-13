@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+  body
+    form(method='post' style='border:1px solid #ccc')
+      .container
+        hr
+        label(for='fname')
+          b First Name
+        input(type='text' placeholder='fname' name='fname')
+        label(for='lname')
+          b Last Name
+        input(type='lname' placeholder='lname' name='lname')
+        label(for='address')
+          b Address
+        input(type='text' placeholder='address' name='address')
+        label(for='dob')
+          b Date Of Birth
+        input(type='text' placeholder='dob' name='dob')
+        label(for='phone')
+          b Phone
+        input(type='number' placeholder='phone' name='phone')
+        .clearfix
+          button.signupbtn(type='submit') Sign Up
