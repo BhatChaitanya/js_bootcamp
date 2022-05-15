@@ -13,7 +13,6 @@ exports.getProfiles = function (req, res) {
 };
 
 exports.getAllbday = function (req, res) {
-  
   var today = new Date();
   var a = String(today.getDate())
   var b = String(today.getMonth() + 1);
@@ -24,7 +23,6 @@ exports.getAllbday = function (req, res) {
     }
     else {
       const regex = new RegExp(a + "[-/]" + b + "[-/][0-9]{4}");
-    
       var pp = []
       var ans = []
       for (let i = 0; i < ppp.length; i++) {
@@ -33,7 +31,6 @@ exports.getAllbday = function (req, res) {
             ans.push(ppp[i]['fname'] + " " + ppp[i]['lname']);
             continue;
           }
-        
       }
       res.send(ans)
     }
@@ -59,16 +56,22 @@ exports.getAllbday = function (req, res) {
 
 exports.todayBday = function (req, res) {
   let id = req.params.userId;
-  console.log(id);
-  Users.findById(id, function (err, data) {
+  console.log(id)
+  Users.findById(id,function (err, data) {
     if (err) {
       res.send("error");
     }
     else {
-      if (data.getIfBday())
-        console.log("Happy Birthday!!");
+      if(data.getIfBday()){
+        console.log("hi");
+        res.send("Happy Birthday!!");
+    }
+      else
+        res.send("Nope;(")
     }
   });
+  // const doc = Users.findById(id);
+  // console.log(doc.getIfBday());
 };
 exports.getFullName = function (req, res) {
   let userId = req.params.id;
