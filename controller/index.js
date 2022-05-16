@@ -16,12 +16,16 @@ exports.getAllbday = function (req, res) {
   var today = new Date();
   var a = String(today.getDate())
   var b = String(today.getMonth() + 1);
+  // if (b < 10) {
+  //   return "0" + b
+  // }
   Users.find(function (err, data) {
     const ppp = data;
     if (err) {
       res.json({ ERROR: err });
     }
     else {
+
       const regex = new RegExp(a + "[-/]" + b + "[-/][0-9]{4}");
       var pp = []
       var ans = []
@@ -36,22 +40,21 @@ exports.getAllbday = function (req, res) {
     }
   })
 }
-      //   //   for (let j = 0; j < pp.length; j++) {
-      //   //     var b = pp[j].split("/").splice(0, 2);
-      //   //     var c = arraryEqual(current, b);
-      //   //     if (c) {
-      //   //       ans.push(pp[j])
-      //   //       break;
-      //   //     }
-      //   //   }
-      //   //   for (let k = 0; k < ppp.length; k++) {
-      //   //     if (ppp[k]["dob"] == ans.join("")) {
-      //   //       ans1.push(ppp[k]['fname'] + " " + ppp[k]['lname']);
-      //   //     }
-      //   //   }
-      //   // }
-      //   // res.send(ans1);
-      // })
+        //   for (let j = 0; j < pp.length; j++) {
+        //     var b = pp[j].split("/").splice(0, 2);
+        //     var c = arraryEqual(current, b);
+        //     if (c) {
+        //       ans.push(pp[j])
+        //       break;
+        //     }
+        //   }
+        //   for (let k = 0; k < ppp.length; k++) {
+        //     if (ppp[k]["dob"] == ans.join("")) {
+        //       ans1.push(ppp[k]['fname'] + " " + ppp[k]['lname']);
+        //     }
+        //   }
+        // }
+        // res.send(ans1);
 
 
 exports.todayBday = function (req, res) {
@@ -63,7 +66,6 @@ exports.todayBday = function (req, res) {
     }
     else {
       if(data.getIfBday()){
-        console.log("hi");
         res.send("Happy Birthday!!");
     }
       else
