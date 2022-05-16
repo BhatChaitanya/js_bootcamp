@@ -24,7 +24,8 @@ exports.getAllbday = function (req, res) {
     if (err) {
       res.json({ ERROR: err });
     }
-    else {
+    else
+    {
 
       const regex = new RegExp(a + "[-/]" + b + "[-/][0-9]{4}");
       var pp = []
