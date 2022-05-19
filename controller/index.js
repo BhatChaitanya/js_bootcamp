@@ -1,7 +1,6 @@
 const Users = require("../schema/index");
 const moment = require("moment");
 const { futimesSync } = require("fs");
-
 exports.getProfiles = function (req, res) {
   Users.find(function (err, data) {
     if (err) {
@@ -11,7 +10,6 @@ exports.getProfiles = function (req, res) {
     }
   });
 };
-
 exports.getAllbday = function (req, res) {
   var today = new Date();
   var a = String(today.getDate())
@@ -26,7 +24,6 @@ exports.getAllbday = function (req, res) {
     }
     else
     {
-
       const regex = new RegExp(a + "[-/]" + b + "[-/][0-9]{4}");
       var pp = []
       var ans = []
@@ -73,8 +70,6 @@ exports.todayBday = function (req, res) {
         res.send("Nope;(")
     }
   });
-  // const doc = Users.findById(id);
-  // console.log(doc.getIfBday());
 };
 exports.getFullName = function (req, res) {
   let userId = req.params.id;
